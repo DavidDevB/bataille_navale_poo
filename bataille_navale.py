@@ -53,14 +53,19 @@ SQUARE_STATE_REPR = [' ', 'X', '#', '-']
 
 aircraft_carrier = Ship("aircraft_carrier")
 aircraft_carrier.set_coordinates(2 , 2, 5, "horizontal")
+
 cruiser = Ship("cruiser")
 cruiser.set_coordinates(4, 1, 4, "vertical")
+
 destroyer = Ship("destroyer")
 destroyer.set_coordinates(5, 3, 3, "vertical")
+
 submarine = Ship("submarine")
 submarine.set_coordinates(5, 8, 3, "horizontal")
+
 torpedo_boat = Ship("torpedo_boat")
 torpedo_boat.set_coordinates(9, 5, 2, "horizontal")
+
 ships_list = [aircraft_carrier.coordinates, cruiser.coordinates, destroyer.coordinates, submarine.coordinates, torpedo_boat.coordinates]
 
 
