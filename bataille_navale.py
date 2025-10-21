@@ -73,7 +73,7 @@ class Grid:
     def __init__(self):
         self.played_shots = set()
         self.ships = self._initialize_ships()
-        self.ship_by_coord = self._get_ship_by_coord()
+        self.ship_by_coord = self.get_ship_by_coord()
 
     @staticmethod
     def _initialize_ships():
@@ -95,7 +95,7 @@ class Grid:
 
         return [aircraft_carrier.coordinates, cruiser.coordinates, destroyer.coordinates, submarine.coordinates, torpedo_boat.coordinates]
 
-    def _get_ship_by_coord(self):
+    def get_ship_by_coord(self):
         """Construction d'un dictionnaire permettant de connaitre l'éventuel bateau
            présent sur chaque case de la grille.
 
@@ -213,21 +213,21 @@ class Play:
         return shot_coord
 
     def play(self):
-        new_grid = self.grid
-        played_shots = new_grid.played_shots  # ensemble des coordonnées des tirs des joueurs
-        ship_by_coord = new_grid._get_ship_by_coord()
-        while new_grid.ships:
-            new_grid.display_grid()
+
+        played_shots = self.grid.played_shots  # ensemble des coordonnées des tirs des joueurs
+        ship_by_coord = self.grid.get_ship_by_coord()
+        while self.grid.ships:
+            self.grid.display_grid()
             next_shot_coord = self._ask_coord()
             played_shots.add(next_shot_coord)
             ship_shot = ship_by_coord.get(next_shot_coord)
-            if ship_shot and ship_shot in new_grid.ships:
+            if ship_shot and ship_shot in self.grid.ships:
                 self.grid.analyze_shot(ship_shot, next_shot_coord)
             else:
                 print("Votre tir est tombé dans l'eau")
             print()
 
-        new_grid.display_grid()
+        self.grid.display_grid()
         print('Bravo, vous avez coulé tous les navires')
 # -------------------------------------------------------------------------- #
 # programme principal :                                                      #
