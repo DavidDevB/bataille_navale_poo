@@ -52,6 +52,9 @@ SQUARE_STATE_REPR = [' ', 'X', '#', '-']
 
 
 class Ship:
+    """
+    Classe mère "Ship" associée au nom et coordonnées des bateaux.
+    """
     ships = []
 
     def __init__(self, name):
@@ -69,6 +72,9 @@ class Ship:
 
 
 class Grid:
+    """
+    Classe "Grid" reprenant le fonctionnement de gestion et affichage de la grille en fonction des coordonnées des tirs"
+    """
 
     def __init__(self):
         self.played_shots = set()
@@ -77,6 +83,9 @@ class Grid:
 
     @staticmethod
     def _initialize_ships():
+        """
+        Retourne une liste de dictionnaires représentant les coordonnées des navires après la construction de ceux-ci à partir de la classe mère "Ship".
+        """
 
         aircraft_carrier = Ship("aircraft_carrier")
         aircraft_carrier.set_coordinates(2 , 2, 5, "horizontal")
@@ -173,6 +182,9 @@ class Grid:
 
 
 class Play:
+    """
+    Classe "Play" permettant de lancer la partie en demandant les coordonnées de chaque tir au joueur."
+    """
 
     def __init__(self):
         self.grid = Grid()
@@ -235,4 +247,7 @@ class Play:
 # d'indiquer une case où il souhaite effectuer un tir                        #
 # -------------------------------------------------------------------------- #
 
+if __name__ == "__main__":
+    new_game = Play()
+    new_game.play()
 
